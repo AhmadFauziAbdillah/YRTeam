@@ -1,0 +1,5 @@
+name: yrteam-remap-ecu
+app_id: da_nkPI5tJUDlmW
+owner: ahmadfauziabdillah
+package: .
+kind: wasmer.io/App.v0

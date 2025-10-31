@@ -1,24 +1,45 @@
 [package]
 name = "yrteam-remap-ecu"
 version = "1.0.0"
-description = "YR Team Remap ECU Warranty System"
+description = "YR Team Remap ECU Warranty System with Database"
+license = "MIT"
+readme = "README.md"
 
 [dependencies]
-"php" = "8.1"
+"php/php" = "8.3"
+
+[[module]]
+name = "web"
+source = "php/php:php"
+abi = "wasi"
+
+[module.interfaces]
+wasi = "0.2.0"
 
 [[command]]
-name = "serve"
-module = "php:php"
+name = "start"
+module = "web"
 runner = "wasi"
 
-[command.args]
-args = ["-S", "0.0.0.0:8080", "-t", "/app"]
+[command.annotations.wasi]
+env = [
+    "DB_HOST=db.fr-pari1.bengt.wasmernet.com",
+    "DB_PORT=10272",
+    "DB_USER=086ddaff79e08000139f9c29af2f",
+    "DB_PASS=0690086d-daff-7ceb-8000-a8fa0cd36712",
+    "DB_NAME=YRTeam",
+    "WASMER_ENV=true",
+    "PHP_SESSION_SAVE_PATH=/tmp"
+]
+
+main-args = ["-S", "0.0.0.0:8080", "-t", "/app"]
 
 [fs]
 "/app" = "."
+"/tmp" = "tmp"
 
-[net]
-bind = ["8080"]
+[capabilities.http-client]
+enabled = true
 
-[env]
-WASMER_ENV = "true"
+[capabilities.http-server]
+enabled = true
