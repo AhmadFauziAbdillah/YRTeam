@@ -1,5 +1,5 @@
 [package]
-name = "yrteam-remap-ecu"
+name = "yrteam"
 version = "1.0.0"
 description = "YR Team Remap ECU Warranty System with Database"
 license = "MIT"
