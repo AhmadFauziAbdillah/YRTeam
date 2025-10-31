@@ -157,3 +157,16 @@
 [2025-10-31 04:56:52] [INFO] Environment: Standard
 [2025-10-31 04:56:53] [INFO] Base URL: http://192.168.100.192/yrteam
 [2025-10-31 04:56:53] [INFO] PHP Version: 7.4.12
+[2025-10-31 14:10:44] [INFO] Environment: Standard
+[2025-10-31 14:10:44] [INFO] Base URL: http://192.168.100.192/yrteam
+[2025-10-31 14:10:44] [INFO] PHP Version: 7.4.12
+[2025-10-31 14:10:51] [INFO] Environment: Standard
+[2025-10-31 14:10:51] [INFO] Base URL: http://localhost/yrteam
+[2025-10-31 14:10:51] [INFO] PHP Version: 7.4.12
+[2025-10-31 14:13:24] [WARNING] Failed login attempt for username: admin from IP: ::1
+[2025-10-31 15:45:13] [INFO] Environment: Standard
+[2025-10-31 15:45:14] [INFO] Base URL: http://localhost.
+[2025-10-31 15:45:14] [INFO] PHP Version: 7.4.12
+[2025-10-31 15:45:26] [INFO] Environment: Standard
+[2025-10-31 15:45:26] [INFO] Base URL: http://localhost.
+[2025-10-31 15:45:26] [INFO] PHP Version: 7.4.12
