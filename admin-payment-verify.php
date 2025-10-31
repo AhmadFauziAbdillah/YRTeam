@@ -171,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
                                 <div>
                                     <label class="block text-slate-400 text-sm mb-1">Tanggal Upload</label>
-                                    <p class="text-white"><?php echo date('d/m/Y H:i', strtotime($booking['proof_uploaded_at'])); ?></p>
+                                    <p class="text-white"><?php echo $booking['proof_uploaded_at'] ? date('d/m/Y H:i', strtotime($booking['proof_uploaded_at'])) : '-'; ?></p>
                                 </div>
                             </div>
                         </div>

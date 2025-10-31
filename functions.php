@@ -909,7 +909,8 @@ function getBookingById($bookingId) {
 
     $sql = "SELECT b.*, u.full_name, u.phone, u.email,
                    p.id as payment_id, p.payment_method, p.amount, p.payment_number,
-                   p.proof_image, p.status as payment_status, p.verified_at, p.notes
+                   p.proof_image, p.status as payment_status, p.verified_at, p.notes,
+                   p.updated_at as proof_uploaded_at
             FROM bookings b
             LEFT JOIN users u ON b.user_id = u.id
             LEFT JOIN payments p ON b.id = p.booking_id
@@ -1085,7 +1086,7 @@ function uploadPaymentProof($bookingId, $file) {
 
     if (move_uploaded_file($file['tmp_name'], $filepath)) {
         // Update payment record
-        $sql = "UPDATE payments SET proof_image = ? WHERE booking_id = ?";
+        $sql = "UPDATE payments SET proof_image = ?, updated_at = NOW() WHERE booking_id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("si", $filename, $bookingId);
 
