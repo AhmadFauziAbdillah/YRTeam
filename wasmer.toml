@@ -1,8 +1,7 @@
-
 [package]
-name = "yrteam-remap-ecu"
+name = "yrteam/remap-ecu"
 version = "1.0.0"
-description = "YR Team Remap ECU Warranty System with Database"
+description = "YR Team Remap ECU Warranty System"
 license = "MIT"
 readme = "README.md"
 
@@ -30,7 +29,11 @@ env = [
     "DB_PASS=06904b26-0741-7964-8000-deb9dc5bf4cb",
     "DB_NAME=YRTeamx",
     "WASMER_ENV=true",
-    "PHP_SESSION_SAVE_PATH=/tmp"
+    "PHP_SESSION_SAVE_PATH=/tmp",
+    "WA_NUMBER=62859106545737",
+    "BOT_API_URL=https://whatsapp-production-335b.up.railway.app/send-message",
+    "BOT_STATUS_URL=https://whatsapp-production-335b.up.railway.app/status",
+    "BOT_QR=https://whatsapp-production-335b.up.railway.app"
 ]
 
 main-args = ["-S", "0.0.0.0:8080", "-t", "/app"]
@@ -44,4 +47,3 @@ enabled = true
 
 [capabilities.http-server]
 enabled = true
-
