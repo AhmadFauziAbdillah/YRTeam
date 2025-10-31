@@ -1086,7 +1086,7 @@ function uploadPaymentProof($bookingId, $file) {
 
     if (move_uploaded_file($file['tmp_name'], $filepath)) {
         // Update payment record
-        $sql = "UPDATE payments SET proof_image = ? WHERE booking_id = ?";
+        $sql = "UPDATE payments SET proof_image = ?, updated_at = NOW() WHERE booking_id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("si", $filename, $bookingId);
 
