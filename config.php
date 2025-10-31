@@ -14,9 +14,9 @@ session_start();
 // ========================================
 define('DB_HOST', 'db.fr-pari1.bengt.wasmernet.com');
 define('DB_PORT', 10272);
-define('DB_USER', '086ddaff79e08000139f9c29af2f');
-define('DB_PASS', '0690086d-daff-7ceb-8000-a8fa0cd36712');
-define('DB_NAME', 'YRTeam');
+define('DB_USER', '4b26074177e48000ab09d2cdacc3');
+define('DB_PASS', '06904b26-0741-7964-8000-deb9dc5bf4cb');
+define('DB_NAME', 'YRTeamx');
 
 // Database Connection dengan Error Handling untuk Wasmer
 try {
