@@ -1,5 +1,6 @@
+
 [package]
-name = "yrteam"
+name = "yrteam-remap-ecu"
 version = "1.0.0"
 description = "YR Team Remap ECU Warranty System with Database"
 license = "MIT"
@@ -8,9 +9,17 @@ readme = "README.md"
 [dependencies]
 "php/php" = "8.3"
 
+[[module]]
+name = "web"
+source = "php/php:php"
+abi = "wasi"
+
+[module.interfaces]
+wasi = "0.2.0"
+
 [[command]]
 name = "start"
-module = "php/php:php"
+module = "web"
 runner = "wasi"
 
 [command.annotations.wasi]
@@ -29,9 +38,6 @@ main-args = ["-S", "0.0.0.0:8080", "-t", "/app"]
 [fs]
 "/app" = "."
 "/tmp" = "tmp"
-
-[net]
-bind = ["8080"]
 
 [capabilities.http-client]
 enabled = true
