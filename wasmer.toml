@@ -12,7 +12,7 @@ module = "php:php"
 runner = "wasi"
 
 [command.args]
-args = ["-S", "0.0.0.0:8080", "-t", "."]
+args = ["-S", "0.0.0.0:8080", "-t", "/app"]
 
 [fs]
 "/app" = "."
