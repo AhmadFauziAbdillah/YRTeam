@@ -1,0 +1,14 @@
+# Security for uploads directory
+<FilesMatch "\.(php|php3|php4|php5|phtml|exe|pl|cgi|scr|asp|jsp)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Allow image files only - no restrictions for localhost
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes

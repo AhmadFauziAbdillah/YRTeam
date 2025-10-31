@@ -1,0 +1,24 @@
+[package]
+name = "yrteam-remap-ecu"
+version = "1.0.0"
+description = "YR Team Remap ECU Warranty System"
+
+[dependencies]
+"php" = "8.1"
+
+[[command]]
+name = "serve"
+module = "php:php"
+runner = "wasi"
+
+[command.args]
+args = ["-S", "0.0.0.0:8080", "-t", "."]
+
+[fs]
+"/app" = "."
+
+[net]
+bind = ["8080"]
+
+[env]
+WASMER_ENV = "true"
