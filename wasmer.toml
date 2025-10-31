@@ -17,9 +17,9 @@ runner = "wasi"
 env = [
     "DB_HOST=db.fr-pari1.bengt.wasmernet.com",
     "DB_PORT=10272",
-    "DB_USER=086ddaff79e08000139f9c29af2f",
-    "DB_PASS=0690086d-daff-7ceb-8000-a8fa0cd36712",
-    "DB_NAME=YRTeam",
+    "DB_USER=4b26074177e48000ab09d2cdacc3",
+    "DB_PASS=06904b26-0741-7964-8000-deb9dc5bf4cb",
+    "DB_NAME=YRTeamx",
     "WASMER_ENV=true",
     "PHP_SESSION_SAVE_PATH=/tmp"
 ]
@@ -38,3 +38,4 @@ enabled = true
 
 [capabilities.http-server]
 enabled = true
+
