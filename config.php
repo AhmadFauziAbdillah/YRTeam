@@ -12,11 +12,12 @@ session_start();
 // ========================================
 // DATABASE CONFIGURATION (WASMER.IO)
 // ========================================
-define('DB_HOST', 'db.fr-pari1.bengt.wasmernet.com');
-define('DB_PORT', 10272);
-define('DB_USER', '4b26074177e48000ab09d2cdacc3');
-define('DB_PASS', '06904b26-0741-7964-8000-deb9dc5bf4cb');
-define('DB_NAME', 'YRTeamx');
+// Prioritaskan environment variables, fallback ke hardcoded
+define('DB_HOST', getenv('DB_HOST') ?: 'db.fr-pari1.bengt.wasmernet.com');
+define('DB_PORT', getenv('DB_PORT') ?: 10272);
+define('DB_USER', getenv('DB_USER') ?: '4b26074177e48000ab09d2cdacc3');
+define('DB_PASS', getenv('DB_PASS') ?: '06904b26-0741-7964-8000-deb9dc5bf4cb');
+define('DB_NAME', getenv('DB_NAME') ?: 'YRTeamx');
 
 // Database Connection dengan Error Handling untuk Wasmer
 try {
@@ -42,8 +43,7 @@ try {
 // ========================================
 // APPLICATION CONSTANTS
 // ========================================
-// HAPUS ADMIN_PASSWORD dari sini - sekarang di database
-define('WA_NUMBER', '62859106545737');
+define('WA_NUMBER', getenv('WA_NUMBER') ?: '62859106545737');
 define('SITE_NAME', 'Sistem Garansi Remap ECU');
 
 // ========================================
@@ -57,9 +57,9 @@ define('SESSION_TIMEOUT', 3600); // 1 jam
 // ========================================
 // BOT WHATSAPP CONFIGURATION
 // ========================================
-define('BOT_API_URL', 'https://whatsapp-production-335b.up.railway.app/send-message');
-define('BOT_STATUS_URL', 'https://whatsapp-production-335b.up.railway.app/status');
-define('BOT_QR', 'https://whatsapp-production-335b.up.railway.app');    
+define('BOT_API_URL', getenv('BOT_API_URL') ?: 'https://whatsapp-production-335b.up.railway.app/send-message');
+define('BOT_STATUS_URL', getenv('BOT_STATUS_URL') ?: 'https://whatsapp-production-335b.up.railway.app/status');
+define('BOT_QR', getenv('BOT_QR') ?: 'https://whatsapp-production-335b.up.railway.app');
 define('BOT_TIMEOUT', 30);
 
 // ========================================
@@ -68,10 +68,18 @@ define('BOT_TIMEOUT', 30);
 // Set timezone
 date_default_timezone_set('Asia/Jakarta');
 
-// Error reporting untuk development (tampilkan error untuk debugging)
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+// Error reporting - tampilkan di development, sembunyikan di production
+$isProduction = getenv('WASMER_ENV') === 'true' || isWasmerEnvironment();
+error_reporting($isProduction ? 0 : E_ALL);
+ini_set('display_errors', $isProduction ? '0' : '1');
 ini_set('log_errors', '1');
+
+// Set error log path
+$logDir = __DIR__ . '/logs';
+if (!file_exists($logDir)) {
+    @mkdir($logDir, 0755, true);
+}
+ini_set('error_log', $logDir . '/php-error.log');
 
 // ========================================
 // HELPER FUNCTIONS
