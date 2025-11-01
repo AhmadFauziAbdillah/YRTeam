@@ -299,7 +299,7 @@ $pageTitle = 'YR Team - Remap ECU Motor';
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 gap-8">
                 <!-- Remap ECU -->
                 <div class="service-card glass-morphism rounded-2xl p-8 slide-up" style="animation-delay: 0.1s;">
                     <div class="text-center">
@@ -318,6 +318,9 @@ $pageTitle = 'YR Team - Remap ECU Motor';
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-4">
