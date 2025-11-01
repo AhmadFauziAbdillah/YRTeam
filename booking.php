@@ -10,7 +10,7 @@ $errors = [];
 
 // Service prices
 $servicePrices = [
-    'remap_ecu' => 3000000,
+    'remap_ecu' => 300000,
     'tuning' => 200000,
     'maintenance' => 100000
 ];

@@ -246,7 +246,7 @@ function extendWarranty($oldId, $newId, $warrantyDays) {
         $message .= "Tgl Perpanjangan: " . date('d/m/Y H:i') . "\n";
         $message .= "Masa Berlaku: $warrantyDays Hari\n";
         $message .= "Berlaku s/d: " . date('d/m/Y', strtotime($expiryDate)) . "\n\n";
-        $message .= "Website : yrteam.wasmer.app\n";
+        $message .= "Website : yrteam.web.id\n";
         $message .= "*SIMPAN ID GARANSI BARU ANDA*\n";
         $message .= "Gunakan ID baru ini untuk cek masa aktif garansi";
         
@@ -332,7 +332,7 @@ function generateWhatsAppMessage($id, $nama, $nohp, $model, $registrationDate, $
     $message .= "Tanggal Registrasi: " . date('d/m/Y H:i', strtotime($registrationDate)) . "\n";
     $message .= "Masa Berlaku: $warrantyDays Hari\n";
     $message .= "Berlaku s/d: $expiryDate\n\n";
-    $message .= "Website : yrteam.wasmer.app\n";
+    $message .= "Website : yrteam.web.id\n";
     $message .= "*SIMPAN ID GARANSI ANDA*\n";
     $message .= "Gunakan ID ini untuk cek masa aktif garansi kapan saja.\n\n";
     $message .= "Terima kasih telah mempercayai layanan kami! 🙏";
@@ -359,7 +359,7 @@ function resendWarrantyInfo($warrantyId) {
     $message .= "Tgl Registrasi: " . date('d/m/Y', strtotime($warranty['registration_date'])) . "\n";
     $message .= "Masa Berlaku: " . $warranty['warranty_days'] . " Hari\n";
     $message .= "Berlaku s/d: " . date('d/m/Y', strtotime($warranty['expiry_date'])) . "\n\n";
-    $message .= "Website : yrteam.wasmer.app\n";
+    $message .= "Website : yrteam.web.id\n";
     
     if ($warranty['is_active']) {
         $message .= "✅ Status: *AKTIF*\n";
@@ -1016,7 +1016,7 @@ function updateBookingStatus($bookingId, $status) {
                 $message .= "Booking Anda telah dibatalkan.\n\n";
             }
 
-            $message .= "Website : yrteam.wasmer.app\n";
+            $message .= "Website : yrtem.web.id\n";
             $message .= "Untuk informasi lebih lanjut, hubungi admin.";
 
             sendWhatsAppMessageWithFallback($booking['phone'], $message);
@@ -1105,7 +1105,7 @@ function uploadPaymentProof($bookingId, $file) {
                 $message .= "Status: *MENUNGGU VERIFIKASI*\n\n";
                 $message .= "Admin akan memverifikasi pembayaran Anda dalam 1-2 hari kerja.\n";
                 $message .= "Anda akan menerima notifikasi selanjutnya setelah verifikasi selesai.\n\n";
-                $message .= "Website : yrteam.wasmer.app\n";
+                $message .= "Website : yrteam.web.id\n";
                 $message .= "Terima kasih atas kepercayaan Anda! 🙏";
 
                 sendWhatsAppMessageWithFallback($booking['phone'], $message);
@@ -1126,7 +1126,7 @@ function uploadPaymentProof($bookingId, $file) {
                 $adminMessage .= "Tanggal Upload Bukti: " . date('d/m/Y H:i') . "\n\n";
                 $adminMessage .= "Status: *MENUNGGU VERIFIKASI PEMBAYARAN*\n\n";
                 $adminMessage .= "Silakan verifikasi pembayaran di admin panel.\n\n";
-                $adminMessage .= "Website : yrteam.wasmer.app/admin-bookings.php";
+                $adminMessage .= "Website : yrteam.web.id/admin-bookings.php";
 
                 sendWhatsAppMessageWithFallback('62859106545737', $adminMessage);
             }
@@ -1211,7 +1211,7 @@ function verifyPayment($paymentId, $status, $notes = '') {
                 $message .= "\nSilakan upload ulang bukti pembayaran yang valid.";
             }
 
-            $message .= "\n\nWebsite : yrteam.wasmer.app";
+            $message .= "\n\nWebsite : yrteam.web.id";
 
             sendWhatsAppMessageWithFallback($payment['phone'], $message);
         }
