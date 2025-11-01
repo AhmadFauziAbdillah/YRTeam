@@ -468,7 +468,7 @@ $pageTitle = 'YR Team - Remap ECU Motor';
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">WhatsApp</h3>
                     <p class="text-slate-300 mb-4">Chat langsung dengan tim kami</p>
-                    <a href="https://wa.me/6281234567890" target="_blank" class="inline-block px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition">
+                    <a href="https://wa.me/62859106545737" target="_blank" class="inline-block px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition">
                         Hubungi WhatsApp
                     </a>
                 </div>

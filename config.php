@@ -1,40 +1,33 @@
 <?php
 // config.php - Konfigurasi untuk Wasmer.io Hosting dengan Admin Authentication
 
-// Session configuration untuk Wasmer
-ini_set('session.cookie_httponly', 1);
-ini_set('session.use_strict_mode', 1);
-ini_set('session.cookie_samesite', 'Lax');
-ini_set('session.cookie_secure', 1); // Set to 1 if using HTTPS
-
 session_start();
 
 // ========================================
 // DATABASE CONFIGURATION (WASMER.IO)
 // ========================================
-// Prioritaskan environment variables, fallback ke hardcoded
-define('DB_HOST', getenv('DB_HOST') ?: 'db.fr-pari1.bengt.wasmernet.com');
-define('DB_PORT', getenv('DB_PORT') ?: 10272);
-define('DB_USER', getenv('DB_USER') ?: '4b26074177e48000ab09d2cdacc3');
-define('DB_PASS', getenv('DB_PASS') ?: '06904b26-0741-7964-8000-deb9dc5bf4cb');
-define('DB_NAME', getenv('DB_NAME') ?: 'YRTeamx');
+define('DB_HOST', 'db.fr-pari1.bengt.wasmernet.com');
+define('DB_PORT', 10272);
+define('DB_USER', '4b26074177e48000ab09d2cdacc3');
+define('DB_PASS', '06904b26-0741-7964-8000-deb9dc5bf4cb');
+define('DB_NAME', 'YRTeamx');
 
 // Database Connection dengan Error Handling untuk Wasmer
 try {
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-    
+
     if ($conn->connect_error) {
         error_log("Database connection failed: " . $conn->connect_error);
         die("Database connection error. Please check configuration.");
     }
-    
+
     $conn->set_charset("utf8mb4");
-    
+
     // Test connection
     if (!$conn->ping()) {
         throw new Exception("Database connection lost");
     }
-    
+
 } catch (Exception $e) {
     error_log("Database error: " . $e->getMessage());
     die("Database connection failed. Please try again later.");
@@ -43,7 +36,8 @@ try {
 // ========================================
 // APPLICATION CONSTANTS
 // ========================================
-define('WA_NUMBER', getenv('WA_NUMBER') ?: '62859106545737');
+// HAPUS ADMIN_PASSWORD dari sini - sekarang di database
+define('WA_NUMBER', '62859106545737');
 define('SITE_NAME', 'Sistem Garansi Remap ECU');
 
 // ========================================
@@ -60,7 +54,8 @@ define('SESSION_TIMEOUT', 3600); // 1 jam
 define('BOT_API_URL', getenv('BOT_API_URL') ?: 'https://whatsapp-production-335b.up.railway.app/send-message');
 define('BOT_STATUS_URL', getenv('BOT_STATUS_URL') ?: 'https://whatsapp-production-335b.up.railway.app/status');
 define('BOT_QR', getenv('BOT_QR') ?: 'https://whatsapp-production-335b.up.railway.app');
-define('BOT_TIMEOUT', 30);
+define('BOT_TIMEOUT', 60); // Increased timeout for Wasmer
+define('BOT_CONNECT_TIMEOUT', 30); // Connection timeout
 
 // ========================================
 // WASMER.IO SPECIFIC SETTINGS
@@ -68,18 +63,10 @@ define('BOT_TIMEOUT', 30);
 // Set timezone
 date_default_timezone_set('Asia/Jakarta');
 
-// Error reporting - tampilkan di development, sembunyikan di production
-$isProduction = getenv('WASMER_ENV') === 'true' || isWasmerEnvironment();
-error_reporting($isProduction ? 0 : E_ALL);
-ini_set('display_errors', $isProduction ? '0' : '1');
+// Error reporting untuk development (tampilkan error untuk debugging)
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 ini_set('log_errors', '1');
-
-// Set error log path
-$logDir = __DIR__ . '/logs';
-if (!file_exists($logDir)) {
-    @mkdir($logDir, 0755, true);
-}
-ini_set('error_log', $logDir . '/php-error.log');
 
 // ========================================
 // HELPER FUNCTIONS
@@ -410,75 +397,119 @@ function getBotStatus() {
         $ch = curl_init(BOT_STATUS_URL);
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_TIMEOUT => 5,
+            CURLOPT_TIMEOUT => 10,
             CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_FOLLOWLOCATION => true
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+            CURLOPT_HTTPHEADER => [
+                'Accept: application/json',
+                'Content-Type: application/json'
+            ]
         ]);
-        
+
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-        
+
         if ($httpCode === 200 && $response) {
             $data = json_decode($response, true);
-            return [
-                'online' => true,
-                'connected' => isset($data['connected']) ? $data['connected'] : false,
-                'botNumber' => isset($data['user']) ? $data['user'] : null
-            ];
+            if (json_last_error() === JSON_ERROR_NONE) {
+                return [
+                    'online' => true,
+                    'connected' => isset($data['connected']) ? $data['connected'] : false,
+                    'botNumber' => isset($data['botNumber']) ? $data['botNumber'] : (isset($data['user']) ? $data['user'] : null),
+                    'botName' => isset($data['botName']) ? $data['botName'] : null,
+                    'uptime' => isset($data['uptime']) ? $data['uptime'] : null
+                ];
+            }
         }
     } catch (Exception $e) {
         error_log("Bot status check failed: " . $e->getMessage());
     }
-    
+
     return ['online' => false, 'connected' => false];
 }
 
 /**
- * Send WhatsApp message via Bot API
+ * Send WhatsApp message via Bot API - ENHANCED VERSION
  */
 function sendWhatsAppMessage($phone, $message) {
     try {
+        // Clean phone number
+        $phone = preg_replace('/\D/', '', $phone);
+        if (substr($phone, 0, 1) === '0') {
+            $phone = '62' . substr($phone, 1);
+        }
+
         $payload = json_encode([
             'phone' => $phone,
             'message' => $message
-        ]);
-        
+        ], JSON_UNESCAPED_UNICODE);
+
+        logMessage("Sending WA message to: $phone", 'INFO');
+
         $ch = curl_init(BOT_API_URL);
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => $payload,
             CURLOPT_TIMEOUT => BOT_TIMEOUT,
-            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_CONNECTTIMEOUT => BOT_CONNECT_TIMEOUT,
+            CURLOPT_SSL_VERIFYPEER => true,
+            CURLOPT_SSL_VERIFYHOST => 2,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_USERAGENT => 'YRTeam-Bot-Client/1.0',
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json',
+                'Accept: application/json',
                 'Content-Length: ' . strlen($payload)
             ]
         ]);
-        
+
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $error = curl_error($ch);
+        $curlError = curl_error($ch);
+        $curlErrno = curl_errno($ch);
+
         curl_close($ch);
-        
-        if ($httpCode === 200 && $response) {
-            $data = json_decode($response, true);
+
+        logMessage("WA send response - HTTP: $httpCode, CURL Error: $curlErrno", 'INFO');
+
+        if ($curlErrno !== 0) {
+            logMessage("WA send CURL error: $curlError", 'WARNING');
             return [
-                'success' => isset($data['success']) ? $data['success'] : true,
-                'method' => 'api',
-                'response' => $data
+                'success' => false,
+                'error' => "Connection error: $curlError (code: $curlErrno)",
+                'method' => 'api'
             ];
         }
-        
+
+        if ($httpCode === 200 && $response) {
+            $data = json_decode($response, true);
+
+            if (json_last_error() === JSON_ERROR_NONE) {
+                logMessage("WA message sent successfully", 'INFO');
+                return [
+                    'success' => isset($data['success']) ? $data['success'] : true,
+                    'method' => 'api',
+                    'response' => $data
+                ];
+            } else {
+                logMessage("WA response JSON error: " . json_last_error_msg(), 'WARNING');
+            }
+        }
+
+        logMessage("WA send failed - HTTP $httpCode: $response", 'WARNING');
+
         return [
             'success' => false,
-            'error' => $error ?: "HTTP $httpCode",
-            'method' => 'api'
+            'error' => "HTTP $httpCode" . ($response ? ": $response" : ""),
+            'method' => 'api',
+            'http_code' => $httpCode
         ];
-        
+
     } catch (Exception $e) {
-        error_log("WhatsApp send failed: " . $e->getMessage());
+        logMessage("WA send exception: " . $e->getMessage(), 'ERROR');
         return [
             'success' => false,
             'error' => $e->getMessage(),
@@ -488,25 +519,92 @@ function sendWhatsAppMessage($phone, $message) {
 }
 
 /**
- * Send WhatsApp with fallback to web.whatsapp.com
+ * Send WhatsApp with fallback to web.whatsapp.com - ENHANCED
  */
 function sendWhatsAppMessageWithFallback($phone, $message) {
+    // Clean phone number
+    $phone = preg_replace('/\D/', '', $phone);
+    if (substr($phone, 0, 1) === '0') {
+        $phone = '62' . substr($phone, 1);
+    }
+
     // Try Bot API first
+    logMessage("Attempting to send via Bot API to: $phone", 'INFO');
     $result = sendWhatsAppMessage($phone, $message);
-    
+
     // If Bot fails, fallback to WhatsApp Web
     if (!$result['success']) {
+        logMessage("Bot API failed, using WhatsApp Web fallback. Error: " . ($result['error'] ?? 'Unknown'), 'WARNING');
+
         $waURL = 'https://wa.me/' . $phone . '?text=' . urlencode($message);
         return [
             'success' => true,
             'method' => 'fallback',
             'url' => $waURL,
-            'error' => $result['error']
+            'error' => $result['error'] ?? 'Bot unavailable',
+            'bot_response' => $result
         ];
     }
-    
+
+    logMessage("Message sent successfully via Bot API", 'INFO');
     return $result;
 }
+
+/**
+ * Test bot connectivity - NEW FUNCTION
+ */
+function testBotConnection() {
+    $results = [
+        'timestamp' => date('Y-m-d H:i:s'),
+        'environment' => isWasmerEnvironment() ? 'Wasmer.io' : 'Local',
+        'tests' => []
+    ];
+
+    // Test 1: DNS Resolution
+    $hostname = parse_url(BOT_STATUS_URL, PHP_URL_HOST);
+    $ip = gethostbyname($hostname);
+    $results['tests']['dns'] = [
+        'hostname' => $hostname,
+        'ip' => $ip,
+        'resolved' => $ip !== $hostname
+    ];
+
+    // Test 2: Basic connectivity
+    $ch = curl_init(BOT_STATUS_URL);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 10,
+        CURLOPT_CONNECTTIMEOUT => 5,
+        CURLOPT_NOBODY => true,
+        CURLOPT_HEADER => true
+    ]);
+
+    $response = curl_exec($ch);
+    $info = curl_getinfo($ch);
+    curl_close($ch);
+
+    $results['tests']['connectivity'] = [
+        'http_code' => $info['http_code'],
+        'total_time' => $info['total_time'],
+        'connect_time' => $info['connect_time'],
+        'success' => $info['http_code'] === 200
+    ];
+
+    // Test 3: Full status check
+    $botStatus = getBotStatus();
+    $results['tests']['bot_status'] = $botStatus;
+
+    // Test 4: CURL capabilities
+    $results['tests']['curl_info'] = [
+        'version' => curl_version()['version'] ?? 'Unknown',
+        'ssl_version' => curl_version()['ssl_version'] ?? 'Unknown',
+        'protocols' => curl_version()['protocols'] ?? []
+    ];
+
+    return $results;
+}
+
+
 
 // ========================================
 // WASMER.IO COMPATIBILITY CHECKS

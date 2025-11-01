@@ -170,3 +170,83 @@
 [2025-10-31 15:45:26] [INFO] Environment: Standard
 [2025-10-31 15:45:26] [INFO] Base URL: http://localhost.
 [2025-10-31 15:45:26] [INFO] PHP Version: 7.4.12
+[2025-11-01 13:57:36] [INFO] Environment: Standard
+[2025-11-01 13:57:36] [INFO] Base URL: http://localhost.
+[2025-11-01 13:57:36] [INFO] PHP Version: 7.4.12
+[2025-11-01 13:57:37] [DEBUG] Bot status response: HTTP 200, Response: {"connected":true,"status":"connected","qrRequired":false,"qrAvailable":false,"botNumber":"62859106545737","botName":"yrteam","uptime":278048,"connectionAttempts":0,"maxAttempts":3,"timestamp":"2025-1
+[2025-11-01 13:57:50] [INFO] Environment: Standard
+[2025-11-01 13:57:50] [INFO] Base URL: http://localhost.
+[2025-11-01 13:57:50] [INFO] PHP Version: 7.4.12
+[2025-11-01 13:57:50] [DEBUG] Bot status response: HTTP 200, Response: {"connected":true,"status":"connected","qrRequired":false,"qrAvailable":false,"botNumber":"62859106545737","botName":"yrteam","uptime":278062,"connectionAttempts":0,"maxAttempts":3,"timestamp":"2025-1
+[2025-11-01 14:12:28] [INFO] Environment: Standard
+[2025-11-01 14:12:28] [INFO] Base URL: http://localhost/yrteam
+[2025-11-01 14:12:28] [INFO] PHP Version: 7.4.12
+[2025-11-01 14:12:50] [DEBUG] Bot status response: HTTP 200, Response: {"connected":true,"status":"connected","qrRequired":false,"qrAvailable":false,"botNumber":"62859106545737","botName":"yrteam","uptime":278963,"connectionAttempts":0,"maxAttempts":3,"timestamp":"2025-1
+[2025-11-01 14:17:47] [DEBUG] Bot status response: HTTP 200, Response: {"connected":true,"status":"connected","qrRequired":false,"qrAvailable":false,"botNumber":"62859106545737","botName":"yrteam","uptime":279260,"connectionAttempts":0,"maxAttempts":3,"timestamp":"2025-1
+[2025-11-01 14:32:08] [DEBUG] Bot status response: HTTP 200, Response: {"connected":true,"status":"connected","qrRequired":false,"qrAvailable":false,"botNumber":"62859106545737","botName":"yrteam","uptime":280121,"connectionAttempts":0,"maxAttempts":3,"timestamp":"2025-1
+[2025-11-01 14:34:35] [INFO] Environment: Standard
+[2025-11-01 14:34:35] [INFO] Base URL: http://localhost.
+[2025-11-01 14:34:35] [INFO] PHP Version: 7.4.12
+[2025-11-01 14:34:36] [DEBUG] Bot status check details: {"url":"https:\/\/whatsapp-production-335b.up.railway.app\/status","http_code":200,"curl_error":"","curl_errno":0,"response_length":220,"response_preview":"{\"connected\":true,\"status\":\"connected\",\"qrRequired\":false,\"qrAvailable\":false,\"botNumber\":\"62859106545737\",\"botName\":\"yrteam\",\"uptime\":280269,\"connectionAttempts\":0,\"maxAttempts\":3,\"timestamp\":\"2025-11-01T07:34:36.365Z\"}","is_wasmer":false,"php_version":"7.4.12","verbose_output":""}
+[2025-11-01 14:34:36] [INFO] Bot status parsed successfully: online=true, connected=1, botNumber=62859106545737
+[2025-11-01 14:34:52] [INFO] Environment: Standard
+[2025-11-01 14:34:52] [INFO] Base URL: http://localhost.
+[2025-11-01 14:34:52] [INFO] PHP Version: 7.4.12
+[2025-11-01 14:34:52] [DEBUG] Bot status check details: {"url":"https:\/\/whatsapp-production-335b.up.railway.app\/status","http_code":200,"curl_error":"","curl_errno":0,"response_length":220,"response_preview":"{\"connected\":true,\"status\":\"connected\",\"qrRequired\":false,\"qrAvailable\":false,\"botNumber\":\"62859106545737\",\"botName\":\"yrteam\",\"uptime\":280285,\"connectionAttempts\":0,\"maxAttempts\":3,\"timestamp\":\"2025-11-01T07:34:52.752Z\"}","is_wasmer":false,"php_version":"7.4.12","verbose_output":""}
+[2025-11-01 14:34:52] [INFO] Bot status parsed successfully: online=true, connected=1, botNumber=62859106545737
+[2025-11-01 14:48:35] [DEBUG] Bot status check details: {"url":"https:\/\/whatsapp-production-335b.up.railway.app\/status","http_code":200,"curl_error":"","curl_errno":0,"response_length":220,"response_preview":"{\"connected\":true,\"status\":\"connected\",\"qrRequired\":false,\"qrAvailable\":false,\"botNumber\":\"62859106545737\",\"botName\":\"yrteam\",\"uptime\":281108,\"connectionAttempts\":0,\"maxAttempts\":3,\"timestamp\":\"2025-11-01T07:48:35.465Z\"}","is_wasmer":false,"php_version":"7.4.12","verbose_output":""}
+[2025-11-01 14:48:35] [INFO] Bot status parsed successfully: online=true, connected=1, botNumber=62859106545737
+[2025-11-01 15:02:19] [INFO] Checking bot status at: https://whatsapp-production-335b.up.railway.app/status
+[2025-11-01 15:02:20] [INFO] Bot status check - HTTP Code: 200, Error: 
+[2025-11-01 15:02:20] [INFO] Bot status response: Array
+(
+    [connected] => 
+    [status] => disconnected
+    [qrRequired] => 1
+    [qrAvailable] => 1
+    [botNumber] => 
+    [botName] => 
+    [uptime] => 281932
+    [connectionAttempts] => 0
+    [maxAttempts] => 3
+    [timestamp] => 2025-11-01T08:02:20.110Z
+)
+
+[2025-11-01 15:22:33] [INFO] Environment: Standard
+[2025-11-01 15:22:33] [INFO] Base URL: http://localhostc:/xampp/htdocs/yrteam
+[2025-11-01 15:22:33] [INFO] PHP Version: 7.4.12
+[2025-11-01 15:22:33] [INFO] Checking bot status at: https://whatsapp-production-335b.up.railway.app/status
+[2025-11-01 15:22:34] [INFO] Bot status check - HTTP Code: 200, Error: 
+[2025-11-01 15:22:34] [INFO] Bot status response: Array
+(
+    [connected] => 1
+    [status] => connected
+    [qrRequired] => 
+    [qrAvailable] => 
+    [botNumber] => 62859106545737
+    [botName] => yrteam
+    [uptime] => 283147
+    [connectionAttempts] => 0
+    [maxAttempts] => 3
+    [timestamp] => 2025-11-01T08:22:34.629Z
+)
+
+[2025-11-01 15:22:42] [INFO] Environment: Standard
+[2025-11-01 15:22:42] [INFO] Base URL: http://localhostc:/xampp/htdocs/yrteam
+[2025-11-01 15:22:42] [INFO] PHP Version: 7.4.12
+[2025-11-01 15:22:43] [INFO] Checking bot status at: https://whatsapp-production-335b.up.railway.app/status
+[2025-11-01 15:22:43] [INFO] Bot status check - HTTP Code: 200, Error: 
+[2025-11-01 15:22:43] [INFO] Bot status response: Array
+(
+    [connected] => 1
+    [status] => connected
+    [qrRequired] => 
+    [qrAvailable] => 
+    [botNumber] => 62859106545737
+    [botName] => yrteam
+    [uptime] => 283156
+    [connectionAttempts] => 0
+    [maxAttempts] => 3
+    [timestamp] => 2025-11-01T08:22:43.733Z
+)
+

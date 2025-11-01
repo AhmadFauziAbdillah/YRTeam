@@ -1,24 +1,16 @@
 [package]
-name = "yrteam/remap-ecu"
+name = "yrteam"
 version = "1.0.0"
-description = "YR Team Remap ECU Warranty System"
+description = "YR Team Remap ECU Warranty System with Database"
 license = "MIT"
 readme = "README.md"
 
 [dependencies]
 "php/php" = "8.3"
 
-[[module]]
-name = "web"
-source = "php/php:php"
-abi = "wasi"
-
-[module.interfaces]
-wasi = "0.2.0"
-
 [[command]]
 name = "start"
-module = "web"
+module = "php/php:php"
 runner = "wasi"
 
 [command.annotations.wasi]
@@ -29,11 +21,7 @@ env = [
     "DB_PASS=06904b26-0741-7964-8000-deb9dc5bf4cb",
     "DB_NAME=YRTeamx",
     "WASMER_ENV=true",
-    "PHP_SESSION_SAVE_PATH=/tmp",
-    "WA_NUMBER=62859106545737",
-    "BOT_API_URL=https://whatsapp-production-335b.up.railway.app/send-message",
-    "BOT_STATUS_URL=https://whatsapp-production-335b.up.railway.app/status",
-    "BOT_QR=https://whatsapp-production-335b.up.railway.app"
+    "PHP_SESSION_SAVE_PATH=/tmp"
 ]
 
 main-args = ["-S", "0.0.0.0:8080", "-t", "/app"]
@@ -42,8 +30,19 @@ main-args = ["-S", "0.0.0.0:8080", "-t", "/app"]
 "/app" = "."
 "/tmp" = "tmp"
 
+[exclude]
+files = ["wasmer-installer.exe"]
+
+[net]
+bind = ["8080"]
+
 [capabilities.http-client]
 enabled = true
+allowed-domains = [
+    "railway.app",
+    "*.railway.app",
+    "whatsapp-production-335b.up.railway.app"
+]
 
 [capabilities.http-server]
 enabled = true
