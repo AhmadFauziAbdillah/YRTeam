@@ -20,11 +20,7 @@ if (!$booking || $booking['user_id'] != $user['id']) {
 
 // Payment methods
 $paymentMethods = [
-    'dana' => ['name' => 'Dana', 'number' => '081234567890'],
-    'gopay' => ['name' => 'GoPay', 'number' => '081234567891'],
-    'ovo' => ['name' => 'OVO', 'number' => '081234567892'],
-    'bca' => ['name' => 'BCA', 'number' => '1234567890'],
-    'mandiri' => ['name' => 'Mandiri', 'number' => '1234567890123']
+    'dana' => ['name' => 'Dana', 'number' => '085156504952'],
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

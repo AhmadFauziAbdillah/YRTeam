@@ -161,7 +161,7 @@ $pageTitle = 'YR Team - Remap ECU Motor';
                     Remap<span class="text-blue-500">.</span> ECU
                 </h1>
                 <p class="text-xl lg:text-2xl text-slate-300 mb-8 max-w-2xl mx-auto">
-                    Optimalkan performa motor Anda dengan teknologi remapping ECU terdepan dari YR Team
+                    Optimalkan performa motor dengan remapping ECU YR Team
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="user-register.php" class="px-8 py-4 btn-primary text-white rounded-xl font-semibold shadow-lg">
@@ -297,9 +297,6 @@ $pageTitle = 'YR Team - Remap ECU Motor';
                 <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
                     Layanan<span class="text-blue-500">.</span> Kami
                 </h2>
-                <p class="text-xl text-slate-300 max-w-2xl mx-auto">
-                    Kami menyediakan berbagai layanan remap ECU untuk meningkatkan performa motor Anda
-                </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -315,137 +312,12 @@ $pageTitle = 'YR Team - Remap ECU Motor';
                         <p class="text-slate-300 mb-6">
                             Optimalisasi performa mesin motor melalui remapping ECU dengan teknologi terkini
                         </p>
-                        <div class="text-3xl font-bold text-blue-400 mb-4">Rp 150.000</div>
+                        <div class="text-3xl font-bold text-blue-400 mb-4">Rp 300.000</div>
                         <a href="user-register.php" class="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold transition">
                             Pesan Sekarang
                         </a>
                     </div>
                 </div>
-
-                <!-- Tuning -->
-                <div class="service-card glass-morphism rounded-2xl p-8 slide-up" style="animation-delay: 0.2s;">
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-purple-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-10 h-10 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Tuning Lengkap</h3>
-                        <p class="text-slate-300 mb-6">
-                            Tuning komprehensif untuk performa maksimal dengan analisis mendalam
-                        </p>
-                        <div class="text-3xl font-bold text-purple-400 mb-4">Rp 200.000</div>
-                        <a href="user-register.php" class="inline-block px-6 py-3 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-semibold transition">
-                            Pesan Sekarang
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Maintenance -->
-                <div class="service-card glass-morphism rounded-2xl p-8 slide-up" style="animation-delay: 0.3s;">
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-green-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Maintenance</h3>
-                        <p class="text-slate-300 mb-6">
-                            Servis rutin dan perawatan berkala untuk menjaga performa optimal
-                        </p>
-                        <div class="text-3xl font-bold text-green-400 mb-4">Rp 100.000</div>
-                        <a href="user-register.php" class="inline-block px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition">
-                            Pesan Sekarang
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 px-4 bg-slate-800 bg-opacity-50">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="slide-up">
-                    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-                        Tentang<span class="text-blue-500">.</span> YR Team
-                    </h2>
-                    <p class="text-lg text-slate-300 mb-6">
-                        YR Team adalah spesialis remap ECU motor terpercaya dengan pengalaman lebih dari 5 tahun.
-                        Kami menggunakan teknologi terkini dan software profesional untuk mengoptimalkan performa motor Anda.
-                    </p>
-                    <p class="text-lg text-slate-300 mb-8">
-                        Tim kami terdiri dari teknisi berpengalaman yang telah menangani berbagai jenis motor dan ECU system.
-                        Kami berkomitmen memberikan hasil terbaik dengan garansi kepuasan pelanggan.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <span class="text-white">Garansi 30 hari</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <span class="text-white">Performa maksimal</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide-up" style="animation-delay: 0.2s;">
-                    <div class="glass-morphism rounded-2xl p-8">
-                        <h3 class="text-2xl font-bold text-white mb-6">Mengapa Memilih Kami?</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-4">
-                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span class="text-white font-bold text-sm">1</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-semibold mb-1">Teknologi Terkini</h4>
-                                    <p class="text-slate-300 text-sm">Menggunakan software dan hardware remapping terdepan di industri</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span class="text-white font-bold text-sm">2</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-semibold mb-1">Tim Profesional</h4>
-                                    <p class="text-slate-300 text-sm">Teknisi bersertifikat dengan pengalaman lebih dari 5 tahun</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span class="text-white font-bold text-sm">3</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-semibold mb-1">Garansi Kepuasan</h4>
-                                    <p class="text-slate-300 text-sm">Garansi 30 hari untuk semua layanan remapping</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span class="text-white font-bold text-sm">4</span>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-semibold mb-1">Harga Terjangkau</h4>
-                                    <p class="text-slate-300 text-sm">Kualitas premium dengan harga yang kompetitif</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-4">
@@ -481,7 +353,7 @@ $pageTitle = 'YR Team - Remap ECU Motor';
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Email</h3>
                     <p class="text-slate-300 mb-4">Kirim email untuk informasi detail</p>
-                    <a href="mailto:info@yrteam.com" class="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold transition">
+                    <a href="mailto:fauji1543@gmail.com" class="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold transition">
                         Kirim Email
                     </a>
                 </div>
@@ -517,10 +389,10 @@ $pageTitle = 'YR Team - Remap ECU Motor';
                         <span class="text-white text-xl font-bold">YR Team</span>
                     </div>
                     <p class="text-slate-300 mb-4">
-                        Spesialis remap ECU motor terpercaya dengan teknologi terkini dan tim profesional.
+                        Remap Ecu.
                     </p>
                     <p class="text-slate-400 text-sm">
-                        © 2024 YR Team. All rights reserved.
+                        © 2025 YR Team. All rights reserved.
                     </p>
                 </div>
 
@@ -528,8 +400,6 @@ $pageTitle = 'YR Team - Remap ECU Motor';
                     <h4 class="text-white font-semibold mb-4">Layanan</h4>
                     <ul class="space-y-2 text-slate-300">
                         <li><a href="#services" class="hover:text-white transition">Remap ECU</a></li>
-                        <li><a href="#services" class="hover:text-white transition">Tuning Lengkap</a></li>
-                        <li><a href="#services" class="hover:text-white transition">Maintenance</a></li>
                     </ul>
                 </div>
 
@@ -538,7 +408,6 @@ $pageTitle = 'YR Team - Remap ECU Motor';
                     <ul class="space-y-2 text-slate-300">
                         <li><a href="user-login.php" class="hover:text-white transition">Login</a></li>
                         <li><a href="user-register.php" class="hover:text-white transition">Daftar</a></li>
-                        <li><a href="admin.php" class="hover:text-white transition">Admin</a></li>
                     </ul>
                 </div>
             </div>
